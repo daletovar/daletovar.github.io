@@ -16,11 +16,11 @@ jupyter:
 # Causation may not imply correlation
 
 
-Much of our scientific and everyday understandings of the world depend heavily on the notion that cause and effect reliably co-vary. When we try to elucidate causal relationships between variables we usually try to understand how a state change in one variable induces a state change in another. Explicating these relationships can be quite different. Correlation can be a valuable tool in this kind of inquiry. It is sometimes used as a measuring stick to ask "is there something going on here?" And in many cases, it serves as an appropriate tool.  Without the right conditions in place, however, correlation is insufficient for causal inference. Indeed, under some conditions, correlation finds relationships where there are none, falsely answering "yes" to the "is there something going on here" question. On the other hand, correlation may miss the mark on occasion when asking the same question and falsely identify no relationship when one is present. While much attention has been brought to the former case (you can get started [here](https://statmodeling.stat.columbia.edu/2014/08/04/correlation-even-imply-correlation/)), the latter case is what I'd like to focus on today. To adapt some wise words from Samuel L. Jackson, "the absence of [correlation] is not the evidence of absence [of an influential relationship/coupling among variables]." 
+Much of our scientific and everyday understandings of the world depend heavily on the notion that cause and effect reliably co-vary. When we try to elucidate causal relationships between variables we usually try to understand how a state change in one variable induces a state change in another. Explicating these relationships can be quite different. Correlation can be a valuable tool in this kind of inquiry. It is sometimes used as a measuring stick to ask "is there something going on here?" And in many cases, it serves as an appropriate tool.  Without the right conditions in place, however, correlation is insufficient for causal inference. Indeed, under some conditions, correlation finds relationships where there are none, falsely answering "yes" to the "is there something going on here" question. On the other hand, correlation may miss the mark on occasion when asking the same question and falsely identify no relationship when one is present. While much attention has been brought to the former case (you can get started [here](https://statmodeling.stat.columbia.edu/2014/08/04/correlation-even-imply-correlation/)), the latter case is what I'd like to focus on today. To adapt some wise words from Samuel L. Jackson, "the absence of [correlation] is not the evidence of absence [of an influential relationship/coupling among variables]."
 
 One area of study that I'd like to draw attention to here is the field of resting-state functional MRI in neuroscience. The main idea here is to observe endogenous brain activity of subjects while they lie still in the scanner for a prolonged period. During this time, the scanner collects a brain scan every couple of seconds, after which the researchers are left with a dataset composed of a high-dimensional time series (many spatial measurements by  many time points). To see which brain regions interact most, it is typical to correlate the time series of different brain regions. This and other methods have resulted in elucidating a number of interesting relationship including the "default-mode network," the "salience network," among many others. This kind of analysis is sometimes called "functional connectivity analysis" and it looks to shed light on dependencies among areas of the brain.
 
-What I'd like to draw attention to here is that while a correlation among brain areas may indicate an interesting relationship, the opposite claim that the absence of correlation indicates that there is no interesting relationship is unwarrented and misleading. This inference follows all too easily when we use loaded terminology like "functional connectivity," with the implication that little or no correlation indicates that 1) these regions are not literally connected (not a safe inference) and 2) there is no communication/influence between these regions (also not a safe inference). It is for this reason that I find the adoption of the term "connectivity" to refer to time series correlations unfortunate. In conversations with collegues, many have been under the impression that functional connectivity implies a physical, structural connection and that the absence of functional connectivity between brain regions implies that there is no interesting interactions or communications between these regions.    
+What I'd like to draw attention to here is that while a correlation among brain areas may indicate an interesting relationship, the opposite claim that the absence of correlation indicates that there is no interesting relationship is unwarrented and misleading. This inference follows all too easily when we use loaded terminology like "functional connectivity," with the implication that little or no correlation indicates that 1) these regions are not literally connected (not a safe inference) and 2) there is no communication/influence between these regions (also not a safe inference). It is for this reason that I find the adoption of the term "connectivity" to refer to time series correlations unfortunate. In conversations with collegues, many have been under the impression that functional connectivity implies a physical, structural connection and that the absence of functional connectivity between brain regions implies that there is no interesting interactions or communications between these regions.
 
 
 To highlight how important relationships can be masked when correlation is our only tool, I'd like to examine an entirely hypothetical dynamic that is in no way based on personal experience. Suppose there are two people: Dale and Girl, which we'll denote with D and G respectively in the below equations. Let's suppose that Dale and Girl are romantically interested in one another. Dale, being a sensible young man, is drawn to Girl when she expresses interest in him. His interest wanes, however, when she is cold and distant. Girl, on the other hand, finds Dale's interest, kind words, and actions to be boring, and thus her interest in him wanes when his interest is mutual. When Dale shows less interest, though, Girl finds him strangly mysterious and attractive, or something. We can express this dynamic in the following way:
@@ -31,7 +31,7 @@ $\dot{G} = -D$
 
 The time derivative of Dale's interest ($\dot{D}$) is equal to Girl's current interest. The time derivative of Girl's interest ($\dot{G}$) is equal to minus Dale's current interest. These are simple linear dynamics and we can use a matrix-vector-product to represent them:
 
-$
+$$
 \begin{bmatrix} \dot{D} \\ \dot{G} \end{bmatrix}
  =
   \begin{bmatrix}
@@ -41,7 +41,7 @@ $
    \begin{bmatrix}
    D \\ G
    \end{bmatrix}
-$
+$$
 
 The purely imaginary eigenvalues of this matrix tell us that the functions D(t) and G(t) are out-of-phase sinusoids.
 
@@ -183,7 +183,7 @@ This SINDy model was able to learn the dynamics exactly. SINDy works by doing a 
 
 
 $
-\begin{bmatrix} \dot{D} & \dot{G} \\ \vdots & \vdots \end{bmatrix} = 
+\begin{bmatrix} \dot{D} & \dot{G} \\ \vdots & \vdots \end{bmatrix} =
 \begin{bmatrix} 1 & D & G & DG & D^2 & G^2 & D^3 & G^3 \\
                 \vdots & \vdots & \vdots & \vdots & \vdots & \vdots & \vdots & \vdots
 \end{bmatrix}
