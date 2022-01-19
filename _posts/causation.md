@@ -29,6 +29,9 @@ To highlight how important relationships can be masked when correlation is our o
 ![formula](https://render.githubusercontent.com/render/math?math=\dot{G} = -D)
 
 
+![](https://math.now.sh?from=\log\prod^N_{i}x_{i}=\sum^N_i\log{x_i})
+
+
 $\dot{D} = G$
 
 $\dot{G} = -D$
