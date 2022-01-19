@@ -26,6 +26,9 @@ What I'd like to draw attention to here is that while a correlation among brain 
 To highlight how important relationships can be masked when correlation is our only tool, I'd like to examine an entirely hypothetical dynamic that is in no way based on personal experience. Suppose there are two people: Dale and Girl, which we'll denote with D and G respectively in the below equations. Let's suppose that Dale and Girl are romantically interested in one another. Dale, being a sensible young man, is drawn to Girl when she expresses interest in him. His interest wanes, however, when she is cold and distant. Girl, on the other hand, finds Dale's interest, kind words, and actions to be boring, and thus her interest in him wanes when his interest is mutual. When Dale shows less interest, though, Girl finds him strangly mysterious and attractive, or something. We can express this dynamic in the following way:
 
 ![](https://math.now.sh?from=\dot{D}=G)
+
+![](https://math.now.sh?from=\dot{G}=-D)
+
 ![](https://render.githubusercontent.com/render/math?math=\dot{G}=-D)
 
 
