@@ -39,10 +39,9 @@ from scipy.stats import pearsonr
 A = np.array([[0,1],[-1,0]])
 eigenvalues = np.linalg.eigvals(A)
 print(eigenvalues)
-array([0.+1.j, 0.-1.j])
 ```
 
-array([0.+1.j, 0.-1.j])
+> array([0.+1.j, 0.-1.j])
 
 We can integrate the dynamics forward in time and confirm that this is the case:
 
