@@ -1,20 +1,4 @@
----
-jupyter:
-  jupytext:
-    text_representation:
-      extension: .md
-      format_name: markdown
-      format_version: '1.3'
-      jupytext_version: 1.13.6
-  kernelspec:
-    display_name: Python 3
-    language: python
-    name: python3
----
-
-<!-- #region -->
 # Causation may not imply correlation
-
 
 Much of our scientific and everyday understandings of the world depend heavily on the notion that cause and effect reliably co-vary. When we try to elucidate causal relationships between variables we usually try to understand how a state change in one variable induces a state change in another. Explicating these relationships can be quite different. Correlation can be a valuable tool in this kind of inquiry. It is sometimes used as a measuring stick to ask "is there something going on here?" And in many cases, it serves as an appropriate tool.  Without the right conditions in place, however, correlation is insufficient for causal inference. Indeed, under some conditions, correlation finds relationships where there are none, falsely answering "yes" to the "is there something going on here" question. On the other hand, correlation may miss the mark on occasion when asking the same question and falsely identify no relationship when one is present. While much attention has been brought to the former case (you can get started [here](https://statmodeling.stat.columbia.edu/2014/08/04/correlation-even-imply-correlation/)), the latter case is what I'd like to focus on today. To adapt some wise words from Samuel L. Jackson, "the absence of [correlation] is not the evidence of absence [of an influential relationship/coupling among variables]."
 
@@ -29,16 +13,6 @@ To highlight how important relationships can be masked when correlation is our o
 
 ![](https://math.now.sh?from=\dot{G}=-D)
 
-![](https://render.githubusercontent.com/render/math?math=\dot{G}=-D)
-
-
-![](https://math.now.sh?from=\log\prod^N_{i}x_{i}=\sum^N_i\log{x_i})
-
-
-$\dot{D} = G$
-
-$\dot{G} = -D$
-
 The time derivative of Dale's interest ($\dot{D}$) is equal to Girl's current interest. The time derivative of Girl's interest ($\dot{G}$) is equal to minus Dale's current interest. These are simple linear dynamics and we can use a matrix-vector-product to represent them:
 
 
@@ -46,24 +20,9 @@ The time derivative of Dale's interest ($\dot{D}$) is equal to Girl's current in
 ![Equation](https://math.now.sh?from=%5Cbegin%7Bbmatrix%7D%20%5Cdot%7BD%7D%20%5C%5C%20%5Cdot%7BG%7D%20%5Cend%7Bbmatrix%7D%0A%20%3D%0A%20%20%5Cbegin%7Bbmatrix%7D%0A%20%20%200%20%26%201%20%5C%5C%0A%20%20%20-1%20%26%200%0A%20%20%20%5Cend%7Bbmatrix%7D%0A%20%20%20%5Cbegin%7Bbmatrix%7D%0A%20%20%20D%20%5C%5C%20G%0A%20%20%20%5Cend%7Bbmatrix%7D)
 
 
-$$
-\begin{bmatrix} \dot{D} \\ \dot{G} \end{bmatrix}
- =
-  \begin{bmatrix}
-   0 & 1 \\
-   -1 & 0
-   \end{bmatrix}
-   \begin{bmatrix}
-   D \\ G
-   \end{bmatrix}
-$$
-
 The purely imaginary eigenvalues of this matrix tell us that the functions D(t) and G(t) are out-of-phase sinusoids.
 
-$\lambda = \alpha + i\omega$
-
-$\lambda_1 = 0 + i, \lambda_2 = 0 - i$
-
+![Equation](https://math.now.sh?from=%5Clambda%20%3D%20%5Calpha%20%2B%20i%5Comega%20%3D%20%5Cpm%20i%0A%0A%0A)
 
 <!-- #endregion -->
 
@@ -189,21 +148,6 @@ This SINDy model was able to learn the dynamics exactly. SINDy works by doing a 
 
 ![Equation](https://math.now.sh?from=%5Cbegin%7Bbmatrix%7D%20%5Cdot%7BD%7D%20%26%20%5Cdot%7BG%7D%20%5C%5C%20%5Cvdots%20%26%20%5Cvdots%20%5Cend%7Bbmatrix%7D%20%3D%0A%5Cbegin%7Bbmatrix%7D%201%20%26%20D%20%26%20G%20%26%20DG%20%26%20D%5E2%20%26%20G%5E2%20%26%20D%5E3%20%26%20G%5E3%20%5C%5C%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%5Cvdots%20%26%20%5Cvdots%20%26%20%5Cvdots%20%26%20%5Cvdots%20%26%20%5Cvdots%20%26%20%5Cvdots%20%26%20%5Cvdots%20%26%20%5Cvdots%0A%5Cend%7Bbmatrix%7D%0A%5Cbegin%7Bbmatrix%7D%200%20%26%200%5C%5C%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%200%20%26%20-1%5C%5C%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%201%20%26%200%5C%5C%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%200%20%26%200%5C%5C%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%200%20%26%200%5C%5C%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%200%20%26%200%5C%5C%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%200%20%26%200%5C%5C%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%200%20%26%200%5C%5C%0A%5Cend%7Bbmatrix%7D)
 
-$
-\begin{bmatrix} \dot{D} & \dot{G} \\ \vdots & \vdots \end{bmatrix} =
-\begin{bmatrix} 1 & D & G & DG & D^2 & G^2 & D^3 & G^3 \\
-                \vdots & \vdots & \vdots & \vdots & \vdots & \vdots & \vdots & \vdots
-\end{bmatrix}
-\begin{bmatrix} 0 & 0\\
-                0 & -1\\
-                1 & 0\\
-                0 & 0\\
-                0 & 0\\
-                0 & 0\\
-                0 & 0\\
-                0 & 0\\
-\end{bmatrix}
-$
 
 Using this kind of technique, we're able to generate data-driven dynamical models even in the presence of some noise. Such an approach does not scale well to high dimensional data like most neuroimaging data unless dimensionality reduction of some sort is applied.
 
