@@ -126,6 +126,9 @@ df_dt = d_dt(dynamics[0])
 print("correlation between dD/dt and G(t): ", pearsonr(df_dt[:,0], dynamics[0][:,1])[0])
 print("correlation between dG/dt and D(t): ", pearsonr(df_dt[:,1], dynamics[0][:,0])[0])
 ```
+> correlation between dD/dt and G(t):  0.9999999999990673
+> correlation between dG/dt and D(t):  -0.9999999999993607
+
 
 With those correlations, RSMRIE would be pleased, at least with the first one.
 
@@ -142,6 +145,8 @@ model = ps.SINDy(feature_names=['D', 'G'])
 model.fit(out, t)
 model.print()
 ```
+> (D)' = 1.000 G
+> (G)' = -1.000 D
 
 <!-- #region -->
 This SINDy model was able to learn the dynamics exactly. SINDy works by doing a simple regression $AX = B$ where $A$ is our data with each column representing a different variable, $B$ holds the time derivatives of our data, and X is the latent matrix of coefficients. To identify nonlinear dynamics, we include products and polynomial functions of our original variables. And to make sure that we generate as few coefficients as possible to fit the data, we use a sparsity-promoting regression optimization. For our data at hand, it might looks something like this:
