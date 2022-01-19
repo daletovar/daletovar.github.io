@@ -41,6 +41,12 @@ $\dot{G} = -D$
 
 The time derivative of Dale's interest ($\dot{D}$) is equal to Girl's current interest. The time derivative of Girl's interest ($\dot{G}$) is equal to minus Dale's current interest. These are simple linear dynamics and we can use a matrix-vector-product to represent them:
 
+
+
+![](https://math.now.sh?from=\begin{bmatrix}\dot{D}\\\dot{G}\end{bmatrix}=\begin{bmatrix}0&1\\-1&0\end{bmatrix}\begin{bmatrix}D\\G\end{bmatrix})
+
+
+
 $$
 \begin{bmatrix} \dot{D} \\ \dot{G} \end{bmatrix}
  =
