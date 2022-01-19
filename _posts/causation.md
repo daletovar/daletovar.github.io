@@ -171,17 +171,8 @@ With those correlations, RSMRIE would be pleased, at least with the first one.
 
 By examining the derivatives like this, we have done more than identify a strong relationship between measurements. These two correlations give us all we need to reconstruct the dynamics of how these observations were generated. If we round these values to 1 and -1 we can get our original matrix:
 
-$
-\begin{bmatrix} \dot{D} \\ \dot{G} \end{bmatrix}
- =
-  \begin{bmatrix}
-   0 & 1 \\
-   -1 & 0
-   \end{bmatrix}
-   \begin{bmatrix}
-   D \\ G
-   \end{bmatrix}
-$
+![Equation](https://math.now.sh?from=%5Cbegin%7Bbmatrix%7D%20%5Cdot%7BD%7D%20%5C%5C%20%5Cdot%7BG%7D%20%5Cend%7Bbmatrix%7D%0A%20%3D%0A%20%20%5Cbegin%7Bbmatrix%7D%0A%20%20%200%20%26%201%20%5C%5C%0A%20%20%20-1%20%26%200%0A%20%20%20%5Cend%7Bbmatrix%7D%0A%20%20%20%5Cbegin%7Bbmatrix%7D%0A%20%20%20D%20%5C%5C%20G%0A%20%20%20%5Cend%7Bbmatrix%7D)
+
 
 We intuitively pieced this model back together by correlating derivatives with our observations. We can do better than this. Using the SINDy algorithm, we can learn a complete model from the data with out doing the comparisons ourselves.
 
@@ -196,6 +187,7 @@ model.print()
 This SINDy model was able to learn the dynamics exactly. SINDy works by doing a simple regression $AX = B$ where $A$ is our data with each column representing a different variable, $B$ holds the time derivatives of our data, and X is the latent matrix of coefficients. To identify nonlinear dynamics, we include products and polynomial functions of our original variables. And to make sure that we generate as few coefficients as possible to fit the data, we use a sparsity-promoting regression optimization. For our data at hand, it might looks something like this:
 
 
+![Equation](https://math.now.sh?from=%5Cbegin%7Bbmatrix%7D%20%5Cdot%7BD%7D%20%26%20%5Cdot%7BG%7D%20%5C%5C%20%5Cvdots%20%26%20%5Cvdots%20%5Cend%7Bbmatrix%7D%20%3D%0A%5Cbegin%7Bbmatrix%7D%201%20%26%20D%20%26%20G%20%26%20DG%20%26%20D%5E2%20%26%20G%5E2%20%26%20D%5E3%20%26%20G%5E3%20%5C%5C%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%5Cvdots%20%26%20%5Cvdots%20%26%20%5Cvdots%20%26%20%5Cvdots%20%26%20%5Cvdots%20%26%20%5Cvdots%20%26%20%5Cvdots%20%26%20%5Cvdots%0A%5Cend%7Bbmatrix%7D%0A%5Cbegin%7Bbmatrix%7D%200%20%26%200%5C%5C%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%200%20%26%20-1%5C%5C%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%201%20%26%200%5C%5C%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%200%20%26%200%5C%5C%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%200%20%26%200%5C%5C%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%200%20%26%200%5C%5C%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%200%20%26%200%5C%5C%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%200%20%26%200%5C%5C%0A%5Cend%7Bbmatrix%7D)
 
 $
 \begin{bmatrix} \dot{D} & \dot{G} \\ \vdots & \vdots \end{bmatrix} =
