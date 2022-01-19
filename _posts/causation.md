@@ -127,6 +127,7 @@ print("correlation between dD/dt and G(t): ", pearsonr(df_dt[:,0], dynamics[0][:
 print("correlation between dG/dt and D(t): ", pearsonr(df_dt[:,1], dynamics[0][:,0])[0])
 ```
 > correlation between dD/dt and G(t):  0.9999999999990673
+
 > correlation between dG/dt and D(t):  -0.9999999999993607
 
 
@@ -146,6 +147,7 @@ model.fit(out, t)
 model.print()
 ```
 > (D)' = 1.000 G
+
 > (G)' = -1.000 D
 
 <!-- #region -->
