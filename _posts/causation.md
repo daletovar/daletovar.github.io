@@ -43,8 +43,7 @@ The time derivative of Dale's interest ($\dot{D}$) is equal to Girl's current in
 
 
 
-![](https://math.now.sh?from=\begin{bmatrix}\dot{D}\\\dot{G}\end{bmatrix}=\begin{bmatrix}0&1\\-1&0\end{bmatrix}\begin{bmatrix}D\\G\end{bmatrix})
-
+![Equation](https://math.now.sh?from=%5Cbegin%7Bbmatrix%7D%20%5Cdot%7BD%7D%20%5C%5C%20%5Cdot%7BG%7D%20%5Cend%7Bbmatrix%7D%0A%20%3D%0A%20%20%5Cbegin%7Bbmatrix%7D%0A%20%20%200%20%26%201%20%5C%5C%0A%20%20%20-1%20%26%200%0A%20%20%20%5Cend%7Bbmatrix%7D%0A%20%20%20%5Cbegin%7Bbmatrix%7D%0A%20%20%20D%20%5C%5C%20G%0A%20%20%20%5Cend%7Bbmatrix%7D)
 
 
 $$
